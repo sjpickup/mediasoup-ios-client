@@ -523,7 +523,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Script to copy mediasoup/webrtc header files to project\ncd \"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/include\"\n\necho \"Copying mediasoup header files to the Framework\"\n# Copy mediasoup headers to framework\nfor header in `find . -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    cp -rf \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n\ncd \"${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/\"\n\necho \"Copying webrtc header files to the framework\"\n# Copy webrtc api to the framework\nfor header in `find ./api -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    ditto \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n\n# Copy webrtc third_party abseil-cpp\necho \"Copying webrtc third party header files\"\ncd \"${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp\"\n\nfor header in `find . -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    ditto \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n";
+			shellScript = "# Script to copy mediasoup/webrtc header files to project\ncd \"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/include\"\n\necho \"Copying mediasoup header files to the Framework\"\n# Copy mediasoup headers to framework\nfor header in `find . -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    mkdir -p \"$(dirname ${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header})\"\n    cp -rf \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n\ncd \"${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/\"\n\necho \"Copying webrtc header files to the framework\"\n# Copy webrtc api to the framework\nfor header in `find ./api -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    ditto \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n\n# Copy webrtc third_party abseil-cpp\necho \"Copying webrtc third party header files\"\ncd \"${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp\"\n\nfor header in `find . -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    ditto \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -813,7 +813,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 2G8EYG6ATY;
+				DEVELOPMENT_TEAM = SMQREV95K4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -857,7 +857,29 @@
 				MODULEMAP_FILE = "${SRCROOT}/mediasoup-client-ios/mediasoup_ios_client.modulemap";
 				MODULEMAP_PRIVATE_FILE = "";
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CFLAGS = "-fembed-bitcode-marker";
+				OTHER_CFLAGS = (
+					"-fembed-bitcode-marker",
+					"-DCR_XCODE_VERSION=1240",
+					"-DCR_CLANG_REVISION=\\\"llvmorg-12-init-5035-gd0abc757-3\\\"",
+					"-D__STDC_CONSTANT_MACROS",
+					"-D__STDC_FORMAT_MACROS",
+					"-D_FORTIFY_SOURCE=2",
+					"-DNDEBUG",
+					"-DNVALGRIND",
+					"-DDYNAMIC_ANNOTATIONS_ENABLED=0",
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"-DWEBRTC_ENABLE_PROTOBUF=0",
+					"-DWEBRTC_INCLUDE_INTERNAL_AUDIO_DEVICE",
+					"-DRTC_ENABLE_VP9",
+					"-DHAVE_SCTP",
+					"-DWEBRTC_LIBRARY_IMPL",
+					"-DWEBRTC_ENABLE_AVX2",
+					"-DWEBRTC_NON_STATIC_TRACE_EVENT_HANDLERS=0",
+					"-DWEBRTC_POSIX",
+					"-DWEBRTC_MAC",
+					"-DWEBRTC_IOS",
+					"-DABSL_ALLOCATOR_NOTHROW=1",
+				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-stdlib=libc++",
@@ -899,7 +921,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 2G8EYG6ATY;
+				DEVELOPMENT_TEAM = SMQREV95K4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
