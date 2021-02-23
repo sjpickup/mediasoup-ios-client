@@ -710,7 +710,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp $(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src/ ${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/include";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = "${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -777,7 +777,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp $(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src/ ${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/include";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = "${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -840,7 +840,7 @@
 				INFOPLIST_FILE = "mediasoup-client-ios/Info.plist";
 				INSTALL_OWNER = denvirethan;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -858,27 +858,11 @@
 				MODULEMAP_PRIVATE_FILE = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
+					"-fvisibility=hidden",
 					"-fembed-bitcode-marker",
-					"-DCR_XCODE_VERSION=1240",
-					"-DCR_CLANG_REVISION=\\\"llvmorg-12-init-5035-gd0abc757-3\\\"",
-					"-D__STDC_CONSTANT_MACROS",
-					"-D__STDC_FORMAT_MACROS",
-					"-D_FORTIFY_SOURCE=2",
-					"-DNDEBUG",
-					"-DNVALGRIND",
-					"-DDYNAMIC_ANNOTATIONS_ENABLED=0",
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"-DWEBRTC_ENABLE_PROTOBUF=0",
-					"-DWEBRTC_INCLUDE_INTERNAL_AUDIO_DEVICE",
-					"-DRTC_ENABLE_VP9",
-					"-DHAVE_SCTP",
-					"-DWEBRTC_LIBRARY_IMPL",
-					"-DWEBRTC_ENABLE_AVX2",
-					"-DWEBRTC_NON_STATIC_TRACE_EVENT_HANDLERS=0",
 					"-DWEBRTC_POSIX",
 					"-DWEBRTC_MAC",
 					"-DWEBRTC_IOS",
-					"-DABSL_ALLOCATOR_NOTHROW=1",
 				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -948,7 +932,7 @@
 				INFOPLIST_FILE = "mediasoup-client-ios/Info.plist";
 				INSTALL_OWNER = denvirethan;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -965,7 +949,13 @@
 				MODULEMAP_FILE = "${SRCROOT}/mediasoup-client-ios/mediasoup_ios_client.modulemap";
 				MODULEMAP_PRIVATE_FILE = "";
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_CFLAGS = (
+					"-fvisibility=hidden",
+					"-fembed-bitcode",
+					"-DWEBRTC_POSIX",
+					"-DWEBRTC_MAC",
+					"-DWEBRTC_IOS",
+				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-stdlib=libc++",

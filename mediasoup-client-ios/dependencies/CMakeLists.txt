@@ -1,6 +1,9 @@
 # libmediasoup iOS build file
 
 cmake_minimum_required(VERSION 3.5)
+project(libmediasoup)
+
+set(CMAKE_SYSTEM_NAME "ios")
 
 # C++ requirements
 set(CMAKE_CXX_STANDARD 11)
@@ -34,10 +37,12 @@ set(LIBSDPTRANSFORM_BUILD_READMEHELPER OFF)
 
 # Set the sdk version and the min sdk version
 set(IPHONE_SDKVER "13.2")
-set(IPHONE_VERSION_MIN "9.0")
+set(IPHONE_VERSION_MIN "10.0")
+set(CMAKE_OSX_DEPLOYMENT_TARGET "10.0")
 
 # enable bitcode
 add_definitions(-DENABLE_BITCODE)
+add_definitions(-DWEBRTC_POSIX -DWEBRTC_MAC -DWEBRTC_IOS)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fembed-bitcode")
 
 message(STATUS "\n========== libmediasoupclient iOS Build Configuration ==========\n")
