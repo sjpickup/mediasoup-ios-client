@@ -44,6 +44,7 @@
 #define MSC_LOGGER_HPP
 
 #include <cstdio>  // std::snprintf(), std::fprintf(), stdout, stderr
+#include <cstdint> // uint8_t
 #include <cstdlib> // std::abort()
 #include <cstring>
 
@@ -88,7 +89,7 @@ namespace mediasoupclient
 
 /* Logging macros. */
 
-//using Logger = mediasoupclient::Logger;
+// using Logger = mediasoupclient::Logger;
 
 #define _MSC_LOG_SEPARATOR_CHAR "\n"
 
